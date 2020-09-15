@@ -1,8 +1,26 @@
+<style>
+  nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+  }
+  
+  td {
+      border: 1px solid #dddddd;
+  }
+</style>
+
 <body>
 
-<img src="images/Sif.jpg" witdh="25%" height="25%" />
+<nav>
+<img src="images/Sif.jpg" witdh="25%" height="25%" /><br>
 <img src="https://via.placeholder.com/200" />
+</nav>
 
+<main>
+<article>
 <pre>Here is some random Java code:
 <code>
 public class Main { 
@@ -12,20 +30,18 @@ public class Main {
 }
 </code>
 </pre>
-  
+</article>
+
+<article>    
 <form>
   <label for="fname">First name:</label><br>
   <input type="text" id="fname" name="fname"><br>
   <label for="lname">Last name:</label><br>
   <input type="text" id="lname" name="lname">
 </form>
+</article>
 
-<style>
-  td {
-      border: 1px solid #dddddd;
-  }
-</style>
-    
+<article>
 <table>
   <tr>
     <td>This</td>
@@ -43,5 +59,7 @@ public class Main {
     <td>awesomeness</td>
   </tr>
 </table>
-
+</article>
+</main>
+    
 </body>
