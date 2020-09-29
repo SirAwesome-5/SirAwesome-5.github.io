@@ -1,4 +1,14 @@
 /* --- put your css here --- */ 
+nav {
+  position: sticky;
+  top: 0;
+  right: 0;
+  background-color: green;
+  padding: 5px;
+  font-size: 20px;
+  opacity: 0.9;
+}
+
 body {
   background-color: skyblue;
 }
