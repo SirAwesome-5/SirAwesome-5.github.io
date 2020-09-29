@@ -27,7 +27,7 @@ span {
 }
 
 span [class="b"] {
-  display: block;
+  float: left;
 }
 
 span[class="c"] {
