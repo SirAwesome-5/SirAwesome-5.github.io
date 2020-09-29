@@ -34,6 +34,11 @@ span[class="c"] {
   display: inline-block;
 }
 
+img[alt="cat icon"] {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
 
   <head>
