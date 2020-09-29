@@ -26,7 +26,11 @@ span {
   background-color: yellow;
 }
 
-span[class="b"] {
+span [class="b"] {
+  display: block;
+}
+
+span[class="c"] {
   display: inline-block;
 }
 
