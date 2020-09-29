@@ -1,4 +1,4 @@
-/* --- put your css here --- */ 
+
 nav {
   position: sticky;
   top: 0;
@@ -78,14 +78,6 @@ nav {
   opacity: 0.9;
   z-index: 1;
 }
-/* external css is imported into html using the <link> tag in the <head> section, as shown below.
-
-  <head>
-    <link rel="stylesheet" href="assignment02.css">
-  </head>
-
-*/
-
 
 /* --- pre-existing css --- */
 .stripey tr:nth-child(even) {
