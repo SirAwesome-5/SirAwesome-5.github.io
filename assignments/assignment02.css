@@ -48,6 +48,7 @@ img[alt="cat icon"] {
   position: fixed;
   right: 0;
   bottom: 0;
+  z-index: 1;
 }
 
 img[alt="dog icon"] {
@@ -65,6 +66,17 @@ img[alt="bird icon"] {
   position:absolute;
   left: 250px;
   top: 50px;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  right: 0;
+  background-color: green;
+  padding: 5px;
+  font-size: 20px;
+  opacity: 0.9;
+  z-index: 1;
 }
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
 
