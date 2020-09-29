@@ -26,6 +26,11 @@ span {
   background-color: yellow;
 }
 
+span[class="b"] {
+  float: left;
+  clear: left;
+}
+
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
 
   <head>
