@@ -27,7 +27,7 @@ span {
 }
 
 span[class="b"] {
-  float: left;
+  display: inline-block;
 }
 
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
