@@ -19,16 +19,12 @@ let currentScore;
 let parTotal;
 let nextPar;
 let scoreTotal;
-// let clearButton = doucment.createElement("BUTTON");
-// clearButton.innerHTML = "C";
+
 
 for (let i=1; i<19; i++) {
   // assign the entire table row for hole i to a variable, elem
   element[i]
   = document.getElementById(i);
-  
-  // create a clear button for each hole row
-  // element[i].children[4].appendChild(clearButton);
   
   // assign a function to the + button
   element[i].children[4].children[0].onclick 
