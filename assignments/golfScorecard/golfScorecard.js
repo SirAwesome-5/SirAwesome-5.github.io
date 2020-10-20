@@ -125,7 +125,7 @@ function overUnderTotal () {
     return totals[3].innerHTML = scoreTotal - parTotal - 4;
 }
 
-// create a "clearRow" function
+/* create a "clearRow" function
 function clearRow (elem, total) {
   // adjust the score total
   let scoreTemp = 0;
@@ -140,3 +140,4 @@ function clearRow (elem, total) {
   totals[3].innerHTML
   = overUnderTotal();
 }
+*/
