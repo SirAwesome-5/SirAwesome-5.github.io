@@ -29,7 +29,7 @@ for (let i=1; i<19; i++) {
   clearButton = document.createElement("BUTTON");
   clearButton.innerHTML = "C";
   clearButton.setAttribute("class", "btn btn-primary");
-  element[i].children[4].appendChild(clearButton);
+  element[i].children[4].appendChild(" "+clearButton);
   
   // assign a function to the + button
   element[i].children[4].children[0].onclick 
