@@ -29,7 +29,7 @@ for (let i=1; i<19; i++) {
   clearButton = document.createElement("BUTTON");
   clearButton.innerHTML = "C";
   clearButton.setAttribute("class", "btn btn-primary");
-  element[i].children[4].appendChild(" "+clearButton);
+  element[i].children[4].appendChild(clearButton);
   
   // assign a function to the + button
   element[i].children[4].children[0].onclick 
@@ -38,6 +38,10 @@ for (let i=1; i<19; i++) {
   // assign a function to the - button
   element[i].children[4].children[1].onclick 
   = function(){subtract1(element[i], totals[2]);};
+  
+  // assign a function to the new clear button
+  element[i].children[4].children[2].onlick
+  = function(){clearRow(element[i], totals[2];};
   
   // compute and display par total
   parTotal = totals[1].innerHTML;
@@ -119,4 +123,20 @@ function overUnderTotal () {
   scoreTotal = Number.parseInt(scoreTotal);
   if (scoreTotal != 0) 
     return totals[3].innerHTML = scoreTotal - parTotal - 4;
+}
+
+// create a "clearRow" function
+function clearRow(elem, total) {
+  // adjust the score total
+  let scoreTemp = 0;
+  if (elem.children[2].innerHTML != "-";) scoreTemp = elem.children[2].innerHTML;
+  total.innerHtml -= scoretemp;
+  
+  // clear the score for a row
+  elem.children[2].innerHTML = "-";
+  elem.children[3].innerHTML = "-";
+  
+  // call a function to get the over/under total
+  totals[3].innerHTML
+  = overUnderTotal();
 }
