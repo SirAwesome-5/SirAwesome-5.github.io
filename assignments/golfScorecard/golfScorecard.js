@@ -40,8 +40,8 @@ for (let i=1; i<19; i++) {
   = function(){subtract1(element[i], totals[2]);};
   
   // assign a function to the new clear button
-  //element[i].children[4].children[2].onlick
-  //= function(){clearRow(element[i], totals[2]);};
+  element[i].children[4].children[2].onlick
+  = function(){clearRow(element[i], totals[2]);};
   
   // compute and display par total
   parTotal = totals[1].innerHTML;
@@ -125,7 +125,7 @@ function overUnderTotal () {
     return totals[3].innerHTML = scoreTotal - parTotal - 4;
 }
 
-/* create a "clearRow" function
+// create a "clearRow" function
 function clearRow (elem, total) {
   // adjust the score total
   let scoreTemp = 0;
@@ -140,4 +140,3 @@ function clearRow (elem, total) {
   totals[3].innerHTML
   = overUnderTotal();
 }
-*/
