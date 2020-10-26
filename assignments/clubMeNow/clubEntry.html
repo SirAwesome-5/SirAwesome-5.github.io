@@ -47,11 +47,10 @@
 	let newClubDistances;
 	
 	function addClub() {
-              let temp = document.getElementById("clubName");
-	      newClubName = temp.innerHTML;
-              let newClubAbbreviation = newClubName.replace(" ", "");
+	      newClubName = document.getElementById("clubName");
+              let newClubAbbreviation = newClubName.value.replace(" ", "");
 	      newClubAbbreviation = newClubAbbreviation.substring(0, 3);
-              clubs[clubs.length] = [1699, newClubAbbreviation, newClubName,   0, 0, 0, 0, 60.0,   3,   3];
+              clubs[clubs.length] = [1699, newClubAbbreviation, newClubName.value,   0, 0, 0, 0, 60.0,   3,   3];
 	      // store the updated array in local storage
               let str = JSON.stringify(clubs);
               localStorage.setItem("clubs", str);
