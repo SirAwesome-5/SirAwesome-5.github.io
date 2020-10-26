@@ -192,8 +192,8 @@ function updateStats(shotDistance=0) {
             currentNumShots = clubs[clubRow][6];
             newAverage = (currentAverage * currentNumShots + shotDistance) / (currentNumShots + 1);
             clubs[clubRow][3] = newAverage;
-            // update shot countclubs
-            [clubRow][6] += 1;
+            // update shot count
+            clubs[clubRow][6] += 1;
             // update min
             if (clubs[clubRow][4]==0 || shotDistance < clubs[clubRow][4]) clubs[clubRow][4] = shotDistance;
             // update max
