@@ -32,6 +32,7 @@ function loadClubDistances() {
       // if "clubs" array already exists, load it from local storage
       if (localStorage.getItem("clubs")) {
             clubs = JSON.parse(localStorage.getItem("clubs"));
+            if (clubs.length > 14) alert("Warning: you are only allowed to carry 14 clubs in your golf bag in match play competition.");
       }
       // otherwise create new "clubs" array, using resetAllClubs()
       else {
