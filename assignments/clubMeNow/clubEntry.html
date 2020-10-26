@@ -47,7 +47,18 @@
 	let newClubDistances;
 	
 	function addClub() {
-        // your code here
+              newClubName = document.getElementById("clubName").innerHTML;
+              let newClubAbbreviation = newClubName.replace(" ", "");
+	      newClubAbbreviation = newClubAbbreviation.substring(0, 3);
+              // columns - 0: sortPosition, 1: clubAbbrev, 2: clubName, 
+              // 3: avgDist, 4: minDist, 5: maxDist, 6: numOfShots, 
+              // 7: loft/degrees, 8: typical/men, 9: typical/women
+              clubs[clubs.length] = [1699, newClubAbbreviation, newClubName,   0, 0, 0, 0, 60.0,   3,   3]
+	      // store the updated array in local storage
+              let str = JSON.stringify(clubs);
+              localStorage.setItem("clubs", str);
+              // navigate to club distance LIST screen
+              window.location.href = "clubDistanceList.html";
 	}
 	
 	// navigate to club distance LIST screen
