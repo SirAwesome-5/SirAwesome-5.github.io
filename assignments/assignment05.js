@@ -3,22 +3,22 @@
 // use "var" keyword so code works in CodePen
 
 // Covid19api variables
-var URL = "https://api.covid19api.com/summary";
-var covidJson;
-var covidJsObj;
-var newConfirmedOver1000;
+let URL = "https://api.covid19api.com/summary";
+let covidJson;
+let covidJsObj;
+let newConfirmedOver1000;
 
 // AJAX variable
-var xhttp;
+let xhttp;
 
 // Chart.js variables
 
 // modified from : https://www.sitepoint.com/introduction-chart-js-2-0-six-examples/
 // "ctx" is the canvas HTML element where the chart is rendered in the browser
-var ctx = 
+let ctx = 
   document.getElementById('myChart').getContext('2d');
 // "chartData" includes the graph AND the formatting, including title, legend, axes, etc.
-var chartData = {
+let chartData = {
   type: 'bar',
   data: {
     labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -149,7 +149,7 @@ function loadContent() {
 } // end function loadContent() 
 
 // data from: https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population
-var populations = {
+let populations = {
   'china' : 1405137440,
 'india' : 1369152434,
 'united-states' : 330578332,
