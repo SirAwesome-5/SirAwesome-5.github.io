@@ -12,13 +12,16 @@
 			td, th, td input {text-align: right;}
       #loan_table {background-color: pink;}
 		</style>
+		
+		
 
 	</head>
 
 	<body onload="loadDoc();">
 
 		<div class="container">
-
+        <div ng-app="loanPay" ng-controller="Ctrl">
+		
 			<form>
 
 				<h1>College Debt Estimator</h1>
@@ -90,11 +93,11 @@
 									<th>Int Amt</th>
 									<th>YE Bal</th>
 								</tr>
-								<tr ng-repeat="p in payments">
-									<td>{{ p.year }}</td>
-									<td>{{ p.payment }}</td>
-									<td>{{ p.amt }}</td>
-									<td>{{ p.balance }}</td>
+								<tr ng-repeat="x in payments">
+									<td>{{ x.year }}</td>
+									<td>{{ x.payment }}</td>
+									<td>{{ x.amt }}</td>
+									<td>{{ x.balance }}</td>
 								</tr>
 								
 							</table>
@@ -102,9 +105,9 @@
 					</div>
 
 				</div>
-
+</div>
 			</form>
-
+        
 		</div>
     
     <!--- jquery 3.4.1 -->
@@ -114,6 +117,7 @@
   crossorigin="anonymous"></script>
     
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		
 	    <script>
 		
 // If there is a loans array in localStorage, grab it and use it. Otherwise, create a default array.
@@ -129,6 +133,8 @@ else {
     { loan_year: 2024, loan_amount: 10000.00, loan_int_rate: 0.0453 }
   ]; 
 }
+
+let lwi = 0; // This will be used to store a value for angular later.
 
 // --- function: loadDoc() ---
 
@@ -190,30 +196,29 @@ function loadDoc() {
   // set focus to first year: messes up codepen
   // $("#loan_year01").focus();
   
-  var yearPattern = /[^0-9]/;
-  var regex;
+  
   
   // If any enabled input fields lose focus, the table will be updated with new data.
   $("#loan_year01").blur( function() {
-	updateLoansArray();
+	updateLoansArrayAndForm();
   });
   $("#loan_int01").blur( function() {
-    updateLoansArray();
+    updateLoansArrayAndForm();
   });
   $("#loan_amt01").blur( function() {
-    updateLoansArray();
+    updateLoansArrayAndForm();
   });
   $("#loan_amt02").blur( function() {
-    updateLoansArray();
+    updateLoansArrayAndForm();
   });
   $("#loan_amt03").blur( function() {
-    updateLoansArray();
+    updateLoansArrayAndForm();
   });
   $("#loan_amt04").blur( function() {
-    updateLoansArray();
+    updateLoansArrayAndForm();
   });
   $("#loan_amt05").blur( function() {
-    updateLoansArray();
+    updateLoansArrayAndForm();
   });
   
   
@@ -225,7 +230,7 @@ function toComma(value) {
 }
 
 
-function updateLoansArray() {
+function updateLoansArrayAndForm() {
   // Regular expressions used for field validation
   var yearPattern = /[^0-9]/;
   var intPattern = /[^0-9.]/;
@@ -269,7 +274,8 @@ function updateLoansArray() {
 	    loanWithInterest = (loanWithInterest + loans[i].loan_amount) * (1 + loans[0].loan_int_rate);
 	  $("#loan_bal0" + (i+1)).html(toComma(loanWithInterest.toFixed(2)));   
     }
-  
+	lwi = loanWithInterest;
+	
     // Updates interest accrued in the Loans table data found within the amount and balance columns of Loans table.
     var sum = 0;
     for(var i=0; i<5; i++) {
@@ -285,3 +291,50 @@ function updateLoansArray() {
   } // end: if block
   
 } // end: function updateLoansArray();
+
+let toMoney = (value) => {
+  return `\$${toComma(value.toFixed(2))}`; 
+}
+
+// --- Angular ---
+
+var app = angular.module('loanPay', []);
+app.controller('Ctrl', function($scope) {
+  $scope.payments = []; // Initializes an array that will be used to populate the Payments table.
+  
+  // This function is called when the Re-calculate button is clicked
+  $scope.processForm = function () {
+    updateLoansArrayAndForm(); // So lwi isn't 0 when the Re-calculate button is pushed.
+  
+    let totalBalance = lwi; // Initialized as the balance in the bottom left corner of the Loans form. 
+	let intRate = loans[0].loan_int_rate;
+    let n = 10; // number of payment periods (years).
+	let r = intRate / 12; 
+	
+	// Computes the amount of money paid each year
+    let p = 12 * (totalBalance / ((((1 + r) ** (n * 12)) - 1) / (r * (1 + r) ** (n * 12))));
+	
+	// Subtracts amount paid each year from total remaining balance, then populates the Payments table.
+    for (let i = 0; i < 9; i++) {
+      totalBalance -= p; 
+      let interest = totalBalance * (intRate); 
+      // Populates all but the last row of the Payments table.
+	  $scope.payments[i] = {
+        "year":loans[4].loan_year + i + 1,
+        "payment": `\$${toComma(p.toFixed(2))}`, 
+        "amt": `\$${toComma(interest.toFixed(2))}`, 
+        "balance": `\$${toComma((totalBalance += interest).toFixed(2))}` 
+      }
+    }
+	// Populates the last row of the Payments table.
+    $scope.payments[9] = {
+      "year":loans[4].loan_year + 10,
+      "payment": `\$${toComma(totalBalance.toFixed(2))}`, 
+      "amt": `\$${toComma((0).toFixed(2))}`, 
+      "balance":`\$${toComma((0).toFixed(2))}`
+    }
+  }
+}); 
+	  </script>
+	  
+	</body>
